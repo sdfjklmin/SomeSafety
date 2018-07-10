@@ -1,0 +1,5 @@
+客户端脚本安全
+
+浏览器安全:
+	
+	同源策略(same origin policy)
