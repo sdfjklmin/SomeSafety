@@ -17,3 +17,20 @@
 
 	XSS钓鱼(A-3-login.php) (A-3-login2.php)
 	(利用JavaScript在当前页面伪造出一个登录页面,用户登录后将信息发送到指定地方)
+
+	CSS攻击(已被修复,仅做参考) <div id="t" style="background: url('javascript:alert(23)');"></div>
+
+	识别浏览器 alert(navigator.userAgent);[此方法可以伪装信息,具体参照64页代码]
+	js : 仅做参考 FF1，2，3，ie，safari，opera 判断
+	B=(function x(){})[-5]=='x'?'FF3':(function x(){})[-6]=='x'?'FF2':/a/[-1]=='a'?'FF':'\v'=='v'?'IE':/a/.__proto__=='//'?'Saf':/s/.test(/a/.toString)?'Chr':/^function\(/.test([].sort)?'Op':'Unknown';
+
+	XSS Worm (XSS蠕虫)
+
+	调试JavaScript
+	firebug fiddler HttpWatch
+
+
+	XSS构造技巧
+	利用字符编码(字符串转义)
+	绕过长度限制
+	86
