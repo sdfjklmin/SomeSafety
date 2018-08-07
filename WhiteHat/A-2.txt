@@ -3,3 +3,10 @@
 浏览器安全:
 	
 	同源策略(same origin policy)
+
+XSS (跨站脚本攻击)	
+
+Sandbox 浏览器沙箱  资源隔离类模块
+
+Google Chrome(多进程架构)
+[浏览器进程,渲染进程,插件进程,扩展进程]

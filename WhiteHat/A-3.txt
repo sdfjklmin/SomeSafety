@@ -1,0 +1,19 @@
+跨站脚本攻击 (XSS)(A-3.php)
+
+1.基础类型
+
+	反射型XSS(非持久性XSS)[需要诱导用户点击]
+
+	存储型XSS
+
+	DOM Based XSS(A-3.html)
+
+2.XSS攻击	
+	
+	(对用户当前流量器植入恶意脚本,控制用户浏览器)
+	XSS Payload(A-3.html)
+
+	XSS Payload表单构建(A-3.html)
+
+	XSS钓鱼(A-3-login.php) (A-3-login2.php)
+	(利用JavaScript在当前页面伪造出一个登录页面,用户登录后将信息发送到指定地方)

