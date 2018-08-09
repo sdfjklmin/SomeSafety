@@ -31,6 +31,7 @@
 
 
 	XSS构造技巧
-	利用字符编码(字符串转义)
-	绕过长度限制
-	86
+		利用字符编码(字符串转义)
+		绕过长度限制
+		使用<base>标签[A-3.html(base)]
+		window.name[A-3.html(window.name)]

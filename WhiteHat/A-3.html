@@ -90,3 +90,38 @@
 <div id="t"></div>
 <input type="text" id="text" value="">
 <input type="button" id="s" value="write" onclick="test()">
+
+<!-- base标签 -->
+<div>
+	<!-- base前 -->
+	<img src="/favicon.ico">
+	<!-- base后 -->
+	<base href="http://www.baidu.com">
+	<!-- 添加base之后的url统一按照base的来 -->
+	<!-- 如果是以下的相对路径,那么可以利用base来伪装一些链接信息 -->
+	<img src="/favicon.ico">
+	<a href="/">click me</a>
+</div>
+
+<!-- window.name测试 -->
+<a href="/">window.name</a>
+<script type="text/javascript">
+	window.name = 'test window name value' ;
+</script>
+
+<!-- 当点击window.name进入链接后 -->
+<!-- 此时这两个不同网页的 window.name相同,即实现了跨页面,跨域数据传递 -->
+<script type="text/javascript">
+	console.log(window.name);
+</script>
+
+<!-- window.name XSS playload -->
+<script type="text/javascript">
+	//当前页面执行
+	window.name = " alert(1) ";
+	//location.href = " http://www.baidu.com ";
+	//跳转页面运行
+	//eval(name);
+</script>
+
+<a href="http://wwww.baidu.com?<script>alert(23)</script>">我是百度</a>
