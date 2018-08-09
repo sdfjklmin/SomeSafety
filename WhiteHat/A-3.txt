@@ -35,3 +35,10 @@
 		绕过长度限制
 		使用<base>标签[A-3.html(base)]
 		window.name[A-3.html(window.name)]
+		Apache XSS
+		Anehta 回旋镖
+		Flash XSS
+	XSS防御
+		HttpOnly
+		输入检查
+		输出检查
