@@ -1,1 +1,9 @@
-CSRF (跨站点请求伪造)[120页]
+CSRF (跨站点请求伪造)[A-4.html]
+
+浏览器Cookie策略
+	Third-party Cookie(本地Cookie)(服务器expire时间过期即无效) -> 保存在服务器本地
+	Session Cookie(临时Cookie)会话Cookie(浏览器关闭即消失) ->保存在浏览器进程的内存空间中
+	
+P3P头:
+	浏览器默认安全级别下,iframe、img、link等标签都是只发送session cookie（又叫 第一方cookie），
+	拦截本地cookie发送（又叫第三方cookie）。当这些标签跨域引用一个页面，实际上是发起了一次GET请求。	
