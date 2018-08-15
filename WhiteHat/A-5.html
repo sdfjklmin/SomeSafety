@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+		
+<div class="Conframe">
+    <iframe name="Conframe" id="Conframe"></iframe>
+</div>
+<li><b class="tip"></b><a target="Conframe" href="http://www.baidu.com">百度</a></li>
+
+</body>
+</html>
+<script type="text/javascript">
+	//在iframe中
+	// top.location == self.location 为 false 即发生了点击劫持
+	// 解决如下
+	if(top.location != location) {
+		top.location = self.location ;
+	}
+</script>
