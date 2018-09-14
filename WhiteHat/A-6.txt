@@ -1,1 +1,15 @@
 HTML 5 新标签 [149]
+
+	新标签的XSS
+
+	Web Storage[类似于非关系型数据库] (浏览器存储,遵循同源策略)	
+		Session Storage(关闭即消失)
+		Local Storage(一直保存)
+
+	postMessage 跨窗口传递消息 类似 window.name
+	
+	Cross-Origin Resource Sharing (跨域请求)	
+		jsonp , ifreame跨域
+
+	Canvas -- img
+		

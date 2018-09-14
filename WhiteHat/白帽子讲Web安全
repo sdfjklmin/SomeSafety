@@ -1,3 +1,6 @@
 Windows Update Medic Service: REG add "HKLM\SYSTEM\CurrentControlSet\Services\WaaSMedicSvc" /v "Start" /t REG_DWORD /d "4" /f
 4 关闭
 2 开启
+
+A:浏览器
+B:服务器
